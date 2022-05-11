@@ -21,28 +21,7 @@
 				}
 			}
 		},
-		// 公告
-		{
-			"path": "pages/index/notice/notice",
-			"style": {
-				"enablePullDownRefresh": true,
-				"navigationBarTitleText": "公告",
-				"app-plus": {
-					"pullToRefresh": {
-						"support": true,
-						"color": "#fa436a",
-						"style": "default"
-					}
-				}
-			}
-		},
-		// 公告详情
-		{
-			"path": "pages/index/notice/detail",
-			"style": {
-				"navigationBarTitleText": "公告详情"
-			}
-		},
+
 		// 商品搜索
 		{
 			"path": "pages/index/search/search",
@@ -78,25 +57,7 @@
 				}
 			}
 		},
-		// 购物车
-		{
-			"path": "pages/cart/cart",
-			"style": {
-				"enablePullDownRefresh": true,
-				"navigationBarTitleText": "购物车",
-				"navigationBarTextStyle": "black",
-				"app-plus": {
-					//          "titleNView": false,
-					//          "softinputNavBar": "none",
-					// 禁用原生导航栏
-					"pullToRefresh": {
-						"support": true,
-						"color": "#fa436a",
-						"style": "default"
-					}
-				}
-			}
-		},
+
 		// 我的
 		{
 			"path": "pages/profile/profile",
@@ -159,35 +120,7 @@
 						}
 					}
 				},
-				// 反馈详情
-				{
-					"path": "feedback/detail",
-					"style": {
-						"navigationBarTitleText": "意见反馈详情"
-					}
-				},
-				// 反馈列表
-				{
-					"path": "feedback/list",
-					"style": {
-						"enablePullDownRefresh": true,
-						"navigationBarTitleText": "意见反馈",
-						"app-plus": {
-							"pullToRefresh": {
-								"support": true,
-								"color": "#fa436a",
-								"style": "default"
-							}
-						}
-					}
-				},
-				// 反馈
-				{
-					"path": "feedback/feedback",
-					"style": {
-						"navigationBarTitleText": "意见反馈"
-					}
-				},
+
 				// 关于
 				{
 					"path": "about/about",
@@ -327,22 +260,7 @@
 						}
 					}
 				},
-				// 售后订单列表
-				{
-					"path": "refund",
-					"style": {
-						"enablePullDownRefresh": true,
-						"navigationBarTitleText": "订单售后",
-						"app-plus": {
-							"pullToRefresh": {
-								"support": true,
-								"color": "#fa436a",
-								"style": "default"
-							},
-							"bounce": "none"
-						}
-					}
-				},
+
 				// 订单列表搜索
 				{
 					"path": "search",
@@ -482,19 +400,7 @@
 				}
 			]
 		},
-		// 营销
-		{
-			"root": "pages/marketing",
-			"pages": [
-				// 注册
-				{
-					"path": "live/list",
-					"style": {
-						"navigationBarTitleText": "直播"
-					}
-				}
-			]
-		},
+
 		// 我的
 		{
 			"root": "pages/user",
@@ -521,50 +427,7 @@
 						}
 					}
 				},
-				// 我的足迹
-				{
-					"path": "footprint/footprint",
-					"style": {
-						"navigationBarTitleText": "我的足迹"
-					}
-				},
-				// 我的优惠券
-				{
-					"path": "coupon/coupon",
-					"style": {
-						"enablePullDownRefresh": true,
-						"navigationBarTitleText": "我的优惠券",
-						"app-plus": {
-							"pullToRefresh": {
-								"support": true,
-								"color": "#fa436a",
-								"style": "default"
-							}
-						}
-					}
-				},
-				// 优惠券详情
-				{
-					"path": "coupon/detail",
-					"style": {
-						"navigationBarTitleText": "优惠券详情"
-					}
-				},
-				// 领券中心
-				{
-					"path": "coupon/list",
-					"style": {
-						"enablePullDownRefresh": true,
-						"navigationBarTitleText": "领券中心",
-						"app-plus": {
-							"pullToRefresh": {
-								"support": true,
-								"color": "#fa436a",
-								"style": "default"
-							}
-						}
-					}
-				},
+
 				// 收货地址
 				{
 					"path": "address/address",
@@ -585,65 +448,6 @@
 					"path": "address/manage",
 					"style": {
 						"navigationBarTitleText": ""
-					}
-				},
-				// 支付
-				{
-					"path": "money/pay",
-					"style": {
-						"navigationBarTitleText": "支付",
-						"navigationStyle": "custom"
-					}
-				},
-				// 支付成功
-				{
-					"path": "money/success",
-					"style": {
-						"navigationBarTitleText": "支付成功",
-						"navigationStyle": "custom"
-					}
-				},
-				// 充值中心
-				{
-					"path": "account/recharge",
-					"style": {
-						"navigationBarTitleText": "充值中心"
-					}
-				},
-				// 会员等级
-				{
-					"path": "account/level",
-					"style": {
-						"navigationBarTitleText": "会员等级"
-					}
-				},
-				// 我的账户
-				{
-					"path": "account/account",
-					"style": {
-						"navigationBarTitleText": "我的账户"
-					}
-				},
-				// 账单明细
-				{
-					"path": "account/bill",
-					"style": {
-						"enablePullDownRefresh": true,
-						"navigationBarTitleText": "账单明细",
-						"app-plus": {
-							"pullToRefresh": {
-								"support": true,
-								"color": "#fa436a",
-								"style": "default"
-							}
-						}
-					}
-				},
-				// 积分详情
-				{
-					"path": "account/integral",
-					"style": {
-						"navigationBarTitleText": "积分详情"
 					}
 				}
 			]
@@ -679,12 +483,6 @@
 				"iconPath": "static/tab-notify.png",
 				"selectedIconPath": "static/tab-notify-rf.png",
 				"text": "消息"
-			},
-			{
-				"pagePath": "pages/cart/cart",
-				"iconPath": "static/tab-cart.png",
-				"selectedIconPath": "static/tab-cart-rf.png",
-				"text": "购物车"
 			},
 			{
 				"pagePath": "pages/profile/profile",
