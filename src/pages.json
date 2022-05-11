@@ -127,64 +127,6 @@
 					"style": {
 						"navigationBarTitleText": ""
 					}
-				},
-				// 关于详情
-				{
-					"path": "about/detail",
-					"style": {
-						"navigationBarTitleText": ""
-					}
-				},
-				// 站点帮助
-				{
-					"path": "helper/index",
-					"style": {
-						"navigationBarTitleText": "站点帮助"
-					}
-				},
-				// 站点帮助详情
-				{
-					"path": "helper/detail",
-					"style": {
-						"navigationBarTitleText": "站点帮助详情"
-					}
-				},
-				// 开票历史列表
-				{
-					"path": "invoice/list",
-					"style": {
-						"enablePullDownRefresh": true,
-						"navigationBarTitleText": "开票历史",
-						"app-plus": {
-							"pullToRefresh": {
-								"support": true,
-								"color": "#fa436a",
-								"style": "default"
-							}
-						}
-					}
-				},
-				// 开票列表
-				{
-					"path": "invoice/invoice",
-					"style": {
-						"enablePullDownRefresh": true,
-						"navigationBarTitleText": "发票管理",
-						"app-plus": {
-							"pullToRefresh": {
-								"support": true,
-								"color": "#fa436a",
-								"style": "default"
-							}
-						}
-					}
-				},
-				// 开票管理
-				{
-					"path": "invoice/manage",
-					"style": {
-						"navigationBarTitleText": ""
-					}
 				}
 			]
 		},
@@ -299,28 +241,7 @@
 						}
 					}
 				},
-				// 发表评价
-				{
-					"path": "evaluation/evaluation",
-					"style": {
-						"navigationBarTitleText": "发表评价"
-					}
-				},
-				// 评价列表
-				{
-					"path": "evaluation/list",
-					"style": {
-						"enablePullDownRefresh": true,
-						"navigationBarTitleText": "评价列表",
-						"app-plus": {
-							"pullToRefresh": {
-								"support": true,
-								"color": "#fa436a",
-								"style": "default"
-							}
-						}
-					}
-				},
+
 				// 订单详情
 				{
 					"path": "detail",
@@ -333,20 +254,6 @@
 					"path": "create/order",
 					"style": {
 						"navigationBarTitleText": "创建订单"
-					}
-				},
-				// 订单物流
-				{
-					"path": "shipping/shipping",
-					"style": {
-						"navigationBarTitleText": "物流详情"
-					}
-				},
-				// 退货物流
-				{
-					"path": "shipping/return",
-					"style": {
-						"navigationBarTitleText": "退货物流"
 					}
 				}
 			]
