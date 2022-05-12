@@ -2,7 +2,7 @@
 	<view class="notify">
 		<uni-table ref="table"  :loading="loading" border stripe  emptyText="暂无更多数据" >
 			<uni-tr class="uni-table-minwidth">
-				<uni-th width="80" align="center">名称</uni-th>
+				<uni-th width="60" align="center">名称</uni-th>
 				<uni-th width="80" align="center">供货单位</uni-th>
 				<uni-th width="100" align="center">到货日期</uni-th>
 				<uni-th width="80" align="center">操作</uni-th>

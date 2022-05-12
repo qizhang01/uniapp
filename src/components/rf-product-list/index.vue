@@ -6,7 +6,6 @@
 				<view
 					v-if="(index + 1) % 2 !== 0 || isList"
 					class="rf-product-item"
-					@tap.stop="navTo(`/pages/product/product?id=${item.id}`)"
 					:class="[isList ? 'rf-product-flex-list' : '']"
 					hover-class="hover"
 					:hover-start-time="150"
@@ -36,7 +35,6 @@
 				<view
 					v-if="(index + 1) % 2 === 0"
 					class="rf-product-item"
-					@tap.stop="navTo(`/pages/product/product?id=${item.id}`)"
 					:class="[isList ? 'rf-product-flex-list' : '']"
 					hover-class="hover"
 					:hover-start-time="150"
@@ -220,3 +218,11 @@ export default {
 	}
 };
 </script>
+
+<style lang="scss">
+.rf-product-list{
+    .rf-pro-tit{
+		height: 24px;
+	}
+}	
+</style>

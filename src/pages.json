@@ -366,11 +366,10 @@
 				}
 			]
 		}
-		// 商户
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "RF商城",
+		"navigationBarTitleText": "商品管理",
 		"navigationBarBackgroundColor": "#FFFFFF",
 		"backgroundColor": "#f8f8f8"
 	},

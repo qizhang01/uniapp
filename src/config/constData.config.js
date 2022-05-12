@@ -73,29 +73,7 @@ export default {
 			url: '/pages/set/authorization/list',
 			content: ''
 		},
-		{
-			title: '发票管理',
-			url: '/pages/set/invoice/invoice',
-			content: '',
-			class: 'mT'
-		},
-		{ title: '开票历史', url: '/pages/set/invoice/list', content: '' },
 		{ title: '清除缓存', url: 'clearCache', content: '' },
-		{
-			title: '关于商城',
-			url: '/pages/set/about/about',
-			content: '',
-			class: 'mT'
-		},
-		{
-			title: '站点帮助',
-			url: '/pages/set/helper/index',
-			content: ''
-		},
-		/*  #ifdef APP-PLUS  */
-		{ title: '检查更新', url: 'versionUpgrade', content: '' },
-		/*  #endif  */
-		{ title: '意见反馈', url: '/pages/set/feedback/list', content: '' }
 	],
 
 	// 个人中心-我的订单
