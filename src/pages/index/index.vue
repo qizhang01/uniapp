@@ -52,7 +52,7 @@
 					@toList="
 					navTo(`/pages/product/list?param=${JSON.stringify({ is_new: 1 })}`)
 				"
-					:header="{ title: '新品上市', desc: 'New Products Listed' }"
+					:header="{ title: '在库商品', desc: '还有库存商品' }"
 					@detail="navToDetailPage"
 				/>
 
