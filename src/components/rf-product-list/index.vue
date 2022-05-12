@@ -23,20 +23,6 @@
 						<view v-if="item">
 							<view class="rf-pro-price">
 								<text class="rf-sale-price" :class="'text-'+themeColor.name">{{ moneySymbol }}{{ item.price }}</text>
-								<text class="rf-factory-price" v-if="item.market_price > item.price">{{ moneySymbol }}{{ item.market_price }}</text>
-							</view>
-							<view class="rf-pro-pay">
-								<text
-									><text :class="'text-'+themeColor.name">{{
-										item.total_sales | filterTotalSales
-									}}</text>
-									人付款</text
-								>
-								<text
-									@tap.stop="toggleSpec(item)"
-									class="iconfont icongouwuche2"
-									:class="'text-'+themeColor.name"
-								></text>
 							</view>
 						</view>
 					</view>
@@ -67,20 +53,6 @@
 						<view v-if="item">
 							<view class="rf-pro-price">
 								<text class="rf-sale-price" :class="'text-'+themeColor.name">{{ moneySymbol }}{{ item.price }}</text>
-								<text class="rf-factory-price" v-if="item.market_price > item.price">{{ moneySymbol }}{{ item.market_price }}</text>
-							</view>
-							<view class="rf-pro-pay">
-								<text
-									><text :class="'text-'+themeColor.name">{{
-										item.total_sales | filterTotalSales
-									}}</text>
-									付款</text
-								>
-								<text
-									@tap.stop="toggleSpec(item)"
-									:class="'text-'+themeColor.name"
-									class="iconfont icongouwuche2"
-								></text>
 							</view>
 						</view>
 					</view>

@@ -7,7 +7,7 @@
 			icon="iconsaomiao"
 			@tab="tabClick"
 			:categoryList="categoryList"
-			:placeholder="hotSearchDefault"
+			:placeholder="请输入关键字"
 		/>
 		<view :style="{
 			paddingTop: merchantShow ? (isOpenIndexCate ? 134 + statusBar + 'px' : 85 + statusBar + 'px' )  : (isOpenIndexCate ? 98 + statusBar + 'px' : 55 + statusBar + 'px' )
@@ -54,7 +54,6 @@
 				"
 					:header="{ title: '新品上市', desc: 'New Products Listed' }"
 					@detail="navToDetailPage"
-					:banner="carouselList.index_new && carouselList.index_new[0]"
 				/>
 
 				<!--网站备案号-->
@@ -65,18 +64,6 @@
 				</view>
 				<!-- #endif -->
 			</block>
-			<view v-else class="index-cate-product-list">
-				<rf-product-list :bottom="bottom" :list="categoryProductList"></rf-product-list>
-				<rf-load-more
-					:status="loadingType"
-					v-if="categoryProductList.length > 0"
-				></rf-load-more>
-				<rf-empty
-					:bottom="bottom"
-					:info="'暂无该分类产品~'"
-					v-if="categoryProductList.length === 0 && !productLoading"
-				></rf-empty>
-			</view>
 		</view>
 		<!--页面加载动画-->
 		<rfLoading isFullScreen :active="loading"></rfLoading>
@@ -87,21 +74,19 @@
 <script>
 	import {
 		indexList,
-		productList
 	} from '@/api/product';
 	import rfSwipeDot from '@/components/rf-swipe-dot';
 	import rfFloorIndex from '@/components/rf-floor-index';
 	import rfSearchBar from '@/components/rf-search-bar';
 	import rfSwiperSlide from '@/components/rf-swiper-slide';
-	import rfProductList from '@/components/rf-product-list';
 	import listCell from '@/components/rf-list-cell';
 	import myCarouselList from '@/config/myCarouselList.config.js'
+	import productList from '@/config/productList.config.js'
 	import { mapMutations } from 'vuex';
 	export default {
 		components: {
 			rfFloorIndex,
 			rfSwipeDot,
-			rfProductList,
 			rfSearchBar,
 			listCell,
 			rfSwiperSlide
@@ -110,22 +95,17 @@
 			return {
 				current: 0, // 轮播图index
 				myCarouselList,
-				carouselList: {}, // 广告图
-				newProductList: [], // 新品上市商品列表
+				newProductList: productList, // 新品上市商品列表
 				share: {},
 				loading: true,
 				scrollTop: 0,
 				kefuShow: true,
 				loadingType: 'more',
-				hotSearchDefault: '请输入关键字',
 				appName: this.$mSettingConfig.appName,
 				categoryList: [], // 分类列表
-				categoryProductList: [], // 分类列表
 				page: 1,
 				currentCate: 0,
-				productLoading: true,
 				isOpenIndexCate: this.$mSettingConfig.isOpenIndexCate,
-				moneySymbol: this.moneySymbol,
 			};
 		},
 		onPageScroll(e) {
@@ -154,40 +134,12 @@
 				/*  #endif */
 				return bottom;
 			},
-			swipeCateList() {
-				const list = this.productCateList;
-				let result = [];
-				for (let i = 0, len = list.length; i < len; i += 10) {
-					result.push(list.slice(i, i + 10));
-				}
-				return result;
-			}
 		},
 		onShareAppMessage() {
 			let shareParams = { title: this.share.share_title || `欢迎来到${this.appName}`, path: '/pages/index/index' };
 			return shareParams;
 		},
-		filters: {
-			filterDiscountPrice(val) {
-				const price = val.product && (val.product.price * val.discount) / 100;
-				switch (val.decimal_reservation_number) {
-					case 0:
-						return (Math.floor(price * 100) / 100).toFixed(2);
-					case 1:
-						return (Math.floor(price * 100) / 100).toFixed(0);
-					case 2:
-						return (Math.floor(price * 100) / 100).toFixed(1);
-					default:
-						return (Math.floor(price * 100) / 100).toFixed(2);
-				}
-			},
-			filterTotalSales(val) {
-				if (val > 10000) {
-					val = `${(val / 10000).toFixed(2)}w`;
-				}
-				return val;
-			}
-		},
+
 		// 下拉刷新
 		onPullDownRefresh() {
 			this.getIndexList('refresh');
@@ -197,7 +149,6 @@
 			if (this.currentCate === 0) return;
 			if (this.loadingType === 'nomore') return;
 			this.page++;
-			this.getProductList(this.currentCate);
 		},
 		methods: {
 			// 顶部tab点击
@@ -206,26 +157,6 @@
 				if (id === 0) return;
 				this.loading = true;
 				this.page = 1;
-				this.productLoading = true;
-				this.categoryProductList = [];
-				this.getProductList(id);
-			},
-			// 获取产品列表
-			async getProductList(id) {
-				await this.$http
-					.get(`${productList}`, {
-						cate_id: id,
-						page: this.page
-					})
-					.then(async r => {
-						this.loading = false;
-						this.productLoading = false;
-						this.loadingType = r.data.length < 10 ? 'nomore' : 'more';
-						this.categoryProductList = [...this.categoryProductList, ...r.data];
-					}).catch(() => {
-						this.loading = false;
-						this.productLoading = false;
-					});
 			},
 			...mapMutations(['setCartNum']),
 			// 监听轮播图切换
@@ -236,36 +167,12 @@
 			initData() {
 				// 设置购物车数量角标
 				this.getIndexList();
-				this.initCartItemCount();
-			},
-			// 设置购物车数量角标
-			async initCartItemCount() {
-				if (
-					this.$mStore.getters.hasLogin &&
-					parseInt(uni.getStorageSync('cartNum'), 10) > 0
-				) {
-					uni.setTabBarBadge({
-						index: this.$mConstDataConfig.cartIndex,
-						text: uni.getStorageSync('cartNum').toString()
-					});
-				} else {
-					uni.removeStorageSync('cartNum');
-					uni.removeTabBarBadge({ index: this.$mConstDataConfig.cartIndex });
-				}
 			},
 			// 通用跳转
 			navTo(route) {
 				this.$mRouter.push({ route });
 			},
-			// 跳转至分类模块
-			navToCategory(id) {
-				if (this.$mSettingConfig.appCateType === '2') {
-					uni.setStorageSync('indexToCateId', id);
-					this.$mRouter.reLaunch({ route: '/pages/category/category' });
-				} else {
-					this.navTo(`/pages/product/list?cate_id=${id}`);
-				}
-			},
+
 			// 通用跳转
 			navToSearch() {
 				this.$mRouter.push({
@@ -300,24 +207,16 @@
 			initIndexData(data) {
 				this.announceList = data.announce;
 				this.categoryList = [{ id: 0, title: '首页' }, {id: 1, title: '预留功能'}];
-				this.carouselList = data.adv;
 				this.search = data.search;
 				this.share = data.share;
-				uni.setStorageSync('search', this.search);
-				this.newProductList = data.product_new;
 				this.config = data.config;
 				this.$mHelper.handleWxH5Share(this.share.share_title || this.appName, this.share.share_desc || `欢迎来到${this.appName}商城`, this.share.share_link || this.$mConfig.hostUrl, this.share.share_cover || this.$mSettingConfig.appLogo);
 			},
 			// 跳转至商品详情页
 			navToDetailPage(data) {
-				const { id } = data;
-				if (!id) return;
-				this.$mRouter.push({ route: `/pages/product/product?id=${id}` });
+	
 			},
-			// 跳转至分类页
-			toCategory() {
-				this.$mRouter.switchTab({ route: '/pages/category/category' });
-			}
+	
 		}
 	};
 </script>
