@@ -24,7 +24,7 @@
 					<switch checked @change="switchChange" />
 				</view>
 			</view>
-			<button type="primary" @click="handleSumbit">提交</button>
+			<button  @click="handleSumbit">提交</button>
 	</view>
 </template>
 <script>
@@ -116,6 +116,10 @@ page {
 	}
 	button{
 		margin-top: 50px;
+		background-color: #fa436a;
+	}
+	input{
+		border-radius: 8px;
 	}
 }
 </style>

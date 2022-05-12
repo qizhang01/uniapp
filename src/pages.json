@@ -1,4 +1,11 @@
 {
+	"easycom": {
+		"autoscan": true,
+		"custom": {
+			// uni-ui 规则如下配置
+			"^uni-(.*)": "@dcloudio/uni-ui/lib/uni-$1/uni-$1.vue"
+		}
+	},
 	"pages": [
 		// 主页
 		{
@@ -34,7 +41,7 @@
 			"path": "pages/notify/notify",
 			"style": {
 				"enablePullDownRefresh": true,
-				"navigationBarTitleText": "消息中心",
+				"navigationBarTitleText": "详情展示",
 				"app-plus": {
 					"bounce": "none",
 					"pullToRefresh": {
@@ -383,13 +390,13 @@
 				"pagePath": "pages/category/category",
 				"iconPath": "static/tab-cate.png",
 				"selectedIconPath": "static/tab-cate-rf.png",
-				"text": "分类"
+				"text": "产品录入"
 			},
 			{
 				"pagePath": "pages/notify/notify",
 				"iconPath": "static/tab-notify.png",
 				"selectedIconPath": "static/tab-notify-rf.png",
-				"text": "消息"
+				"text": "详情展示"
 			},
 			{
 				"pagePath": "pages/profile/profile",

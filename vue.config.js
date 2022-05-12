@@ -6,5 +6,6 @@ module.exports = {
       warnings: true,
       errors: true
     }
-  }
+  },
+  transpileDependencies:['@dcloudio/uni-ui']
 }
