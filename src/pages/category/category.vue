@@ -121,34 +121,11 @@ export default {
 		},
 		// 数据初始化
 		async initData(options) {
-			let title = '新增收货地址';
-			if (options.type === 'edit') {
-				title = '编辑收货地址';
-				await this.getAddressDetail(options.id);
-			} else {
-				setTimeout(() => {
-					this.loading = false;
-				}, 1 * 1000);
-			}
-			this.manageType = options.type;
-			uni.setNavigationBarTitle({
-				title
-			});
+			setTimeout(() => {
+				this.loading = false;
+			}, 1000);
 		},
-		// 获取收货地址
-		async getAddressDetail(id) {
-			await this.$http
-				.get(`${addressDetail}`, {
-					id
-				})
-				.then(async r => {
-					this.addressData = await r.data;
-					this.loading = false;
-				})
-				.catch(() => {
-					this.loading = false;
-				});
-		},
+
 		handleRealNameChange(e) {
 			this.addressData.realname = e.detail.value;
 		},

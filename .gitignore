@@ -2,10 +2,7 @@
 node_modules/
 unpackage/
 #src/api/params.js
-dist/dev/
-dist/build/mp-weixin/
-dist/build/mp-qq/
-dist/resources/
+dist/
 
 # local env files
 .env.local
