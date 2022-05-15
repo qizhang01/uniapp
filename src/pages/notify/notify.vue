@@ -44,11 +44,24 @@ export default {
 	},
 
 	onShow() {
-	
+	    this.getTableList();
 	},
 
 	methods: {
 		...mapMutations(['setNotifyNum']),
+		// 获取列表数据
+		async getTableList() {
+			await this.$http
+				.get('/productlist', {})
+				.then(async r => {
+					// 首页参数赋值
+					console.log(r)
+					//this.loading = false;
+				})
+				.catch(() => {
+					//this.loading = false;
+				});
+		},
 		// 数据初始化
         selectionChange(){
 

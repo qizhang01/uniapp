@@ -55,14 +55,6 @@
 					:header="{ title: '在库商品', desc: '还有库存商品' }"
 					@detail="navToDetailPage"
 				/>
-
-				<!--网站备案号-->
-				<!--#ifdef H5-->
-				<view class="copyright" v-if="config.web_site_icp">
-					{{ config.copyright_desc }}
-					<a href="http://www.beian.miit.gov.cn">{{ config.web_site_icp }}</a>
-				</view>
-				<!-- #endif -->
 			</block>
 		</view>
 		<!--页面加载动画-->
@@ -83,6 +75,21 @@
 	import myCarouselList from '@/config/myCarouselList.config.js'
 	import productList from '@/config/productList.config.js'
 	import { mapMutations } from 'vuex';
+	const announceList = [{
+		cover: "",
+		created_at: "1647177055",
+		id: "3332",
+		synopsis: "",
+		title: "测试消息",
+		view: "0"
+	},{
+		cover: "",
+		created_at: "1647177080",
+		id: "333",
+		synopsis: "",
+		title: "第2条消息",
+		view: "10"
+	}]
 	export default {
 		components: {
 			rfFloorIndex,
@@ -95,6 +102,8 @@
 			return {
 				current: 0, // 轮播图index
 				myCarouselList,
+				categoryList: [{ id: 0, title: '首页' }, {id: 1, title: '预留功能'}],
+				announceList,
 				newProductList: productList, // 新品上市商品列表
 				share: {},
 				loading: true,
@@ -102,7 +111,6 @@
 				kefuShow: true,
 				loadingType: 'more',
 				appName: this.$mSettingConfig.appName,
-				categoryList: [], // 分类列表
 				page: 1,
 				currentCate: 0,
 				isOpenIndexCate: this.$mSettingConfig.isOpenIndexCate,
@@ -112,9 +120,7 @@
 			this.scrollTop = e.scrollTop;
 		},
 		onShow() {
-			// 初始化购物车数量
-			this.setCartNum(uni.getStorageSync('cartNum'));
-			this.initData();
+            this.loading = false;
 		},
 		computed: {
 			statusBar () {
